@@ -1,9 +1,10 @@
 class HollyPop::Question
 
-    attr_accessor :artist
+    attr_accessor :artist, :points
 
     def initialize(artist)
         @artist = artist
+        @points = 1
     end
 
     def challenge
@@ -12,8 +13,10 @@ class HollyPop::Question
         input = gets.chomp
         if @artist.movies.include?(input)
             puts "Nice!"
+            return self.points
         else
             puts "Nice try!"
         end
     end
+
 end

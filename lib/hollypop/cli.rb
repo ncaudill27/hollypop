@@ -18,7 +18,7 @@ class HollyPop::Cli
             when "new game"
                 active_game = HollyPop::Game.new
             when 'exit'
-                break
+                exit
             end
         end
     end

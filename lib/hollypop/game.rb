@@ -1,6 +1,6 @@
 class HollyPop::Game
 
-    attr_accessor :current_artist, :points
+    attr_accessor :artist, :points
 
     def initialize
         @points = 0
@@ -11,14 +11,14 @@ class HollyPop::Game
         puts "Which artist would you like to choose?"
         puts HollyPop::Artist.all_names
         input = gets.chomp
-        @current_artist = HollyPop::Artist.find(input)
+        @artist = HollyPop::Artist.find(input)
         menu
     end
 
     def menu
     input = nil
         while input != 'exit'
-            puts "Current artist: #{@current_artist.name}"
+            puts "Current artist: #{@artist.name}"
             puts "Pop you?"
             puts "New artist?"
             puts "New game?"
@@ -26,7 +26,8 @@ class HollyPop::Game
             case input
 
             when "pop me"
-                HollyPop::Question.new(@current_artist).challenge
+                @points += new_question
+                puts "Current score: #{self.points}"
             when "new artist"
                 puts HollyPop::Artist.all_names
                 new_artist
@@ -41,9 +42,15 @@ class HollyPop::Game
     def new_artist
         input = gets.chomp
         if HollyPop::Artist.all_names.include?(input)
-            @current_artist = HollyPop::Artist.find(input)
+            @artist = HollyPop::Artist.find(input)
         else
             puts "Invalid name"
         end
+    end
+
+    def new_question
+        question = HollyPop::Question.new(@artist)
+        question.challenge
+        question.points
     end
 end
