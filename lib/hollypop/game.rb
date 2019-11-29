@@ -9,7 +9,7 @@ class HollyPop::Game
 
     def intro
         puts "Which artist would you like to choose?"
-        HollyPop::Artist.list_all
+        puts HollyPop::Artist.all_names
         input = gets.chomp
         @current_artist = HollyPop::Artist.find(input)
         menu
@@ -28,18 +28,22 @@ class HollyPop::Game
             when "pop me"
                 HollyPop::Question.new(@current_artist).challenge
             when "new artist"
-                HollyPop::Artist.list_all
+                puts HollyPop::Artist.all_names
                 new_artist
             when "new game"
                 HollyPop::Cli.new.call
             when "exit"
-                break
+                exit
             end
         end
     end
 
     def new_artist
         input = gets.chomp
-        @current_artist = HollyPop::Artist.find(input)
+        if HollyPop::Artist.all_names.include?(input)
+            @current_artist = HollyPop::Artist.find(input)
+        else
+            puts "Invalid name"
+        end
     end
 end

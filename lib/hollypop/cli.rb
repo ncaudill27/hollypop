@@ -8,14 +8,14 @@ class HollyPop::Cli
     def menu
         # Allow choice of next question, new artist, exit
         puts "What would you like do to?"
-        puts "Start new game"
-        puts "Exit"
+        puts "New game?"
+        puts "Type exit at any time"
         input = nil
         while input != 'exit'
             input = gets.strip.downcase
             case input
 
-            when "start new game"
+            when "new game"
                 active_game = HollyPop::Game.new
             when 'exit'
                 break

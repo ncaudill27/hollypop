@@ -5,8 +5,8 @@ class HollyPop::Artist
     def self.all
         @@all
     end
-    def self.list_all
-        @@all.each{|artist|puts artist.name}
+    def self.all_names
+        @@all.collect{|artist| artist.name}
     end
 
     def self.find(name)
