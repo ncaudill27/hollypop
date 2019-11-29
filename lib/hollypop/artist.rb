@@ -6,6 +6,10 @@ class Artist
         @@all.each{|artist|puts artist.name}
     end
 
+    def self.find(name)
+        @@all.find{|artist| artist.name == name}
+    end
+
     attr_accessor :name
    
     def initialize(name)

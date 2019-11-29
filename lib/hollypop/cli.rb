@@ -8,8 +8,10 @@ class HollyPop::Cli
     def start_game
         puts "Which artist would you like to choose?"
         # call #list_artists or Artists.all
-        generate_question
         Artist.list_all
+        selection = gets.chomp
+        Artist.find(selection)
+        # generate_question
     end
 
     def generate_question
