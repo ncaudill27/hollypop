@@ -16,5 +16,7 @@ class HollyPop::Cli
 
     def generate_question(artist)
         puts "Question related to chosen #{artist.name}"
+        Question.new(artist).challenge
     end
+
 end
