@@ -10,11 +10,11 @@ class HollyPop::Cli
         # call #list_artists or Artists.all
         Artist.list_all
         selection = gets.chomp
-        Artist.find(selection)
-        # generate_question
+        game_artist = Artist.find(selection)
+        generate_question(game_artist)
     end
 
-    def generate_question
-        puts "Question related to chosen Artist"
+    def generate_question(artist)
+        puts "Question related to chosen #{artist.name}"
     end
 end
