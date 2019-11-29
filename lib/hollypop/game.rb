@@ -1,35 +1,45 @@
-class Game
+class HollyPop::Game
 
     attr_accessor :current_artist, :points
 
     def initialize
         @points = 0
+        intro
     end
 
     def intro
         puts "Which artist would you like to choose?"
-        Artist.list_all
+        HollyPop::Artist.list_all
         input = gets.chomp
-        current_artist = Artist.find(input)
-        input = nil
-        while input != 'menu'
-            puts "Current artist: #{game_artist.name}"
-            puts "Next question?"
+        @current_artist = HollyPop::Artist.find(input)
+        menu
+    end
+
+    def menu
+    input = nil
+        while input != 'exit'
+            puts "Current artist: #{@current_artist.name}"
+            puts "Pop you?"
             puts "New artist?"
-            puts "Main menu?"
-            input = gets.chomp
+            puts "New game?"
+            input = gets.strip.downcase
             case input
-            when "Next question"
-                generate_question(game_artist)
-            when "New artist"
-                start_game
-            when "menu"
-                menu
+
+            when "pop me"
+                HollyPop::Question.new(@current_artist).challenge
+            when "new artist"
+                HollyPop::Artist.list_all
+                new_artist
+            when "new game"
+                HollyPop::Cli.new.call
+            when "exit"
+                break
             end
         end
     end
 
-    def generate_question
-        Question.new(@current_artist)
+    def new_artist
+        input = gets.chomp
+        @current_artist = HollyPop::Artist.find(input)
     end
 end

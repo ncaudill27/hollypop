@@ -1,7 +1,10 @@
-class Artist
+class HollyPop::Artist
 
     @@all = []
 
+    def self.all
+        @@all
+    end
     def self.list_all
         @@all.each{|artist|puts artist.name}
     end

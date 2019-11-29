@@ -1,4 +1,4 @@
-class Question
+class HollyPop::Question
 
     attr_accessor :artist
 

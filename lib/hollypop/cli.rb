@@ -16,15 +16,11 @@ class HollyPop::Cli
             case input
 
             when "start new game"
-                start_game
+                active_game = HollyPop::Game.new
             when 'exit'
                 break
             end
         end
-    end
-
-    def start_game
-        Game.new.intro
     end
 
 end

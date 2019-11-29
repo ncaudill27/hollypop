@@ -9,3 +9,4 @@ end
 require_relative "./hollypop/cli"
 require_relative "./hollypop/artist"
 require_relative "./hollypop/question"
+require_relative "./hollypop/game"
