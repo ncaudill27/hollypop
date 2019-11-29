@@ -9,6 +9,7 @@ class HollyPop::Cli
         puts "Which artist would you like to choose?"
         # call #list_artists or Artists.all
         generate_question
+        Artist.list_all
     end
 
     def generate_question

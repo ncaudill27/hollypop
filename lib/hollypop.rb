@@ -6,3 +6,4 @@ module HollyPop
 end
 
 require_relative "./hollypop/cli"
+require_relative "./hollypop/artist"

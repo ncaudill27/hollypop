@@ -2,4 +2,7 @@
 
 require './lib/hollypop'
 
+Artist.new("Hugh Jackman")
+Artist.new("Ryan Reynolds")
+
 HollyPop::Cli.new.call
