@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["ncaudill27"]
   spec.email         = ["nelson.a.caudill@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{HollyPop! The celebrity quiz game!}
+  spec.description   = %q{HollyPop is a Flatiron student CLI project.}
   spec.homepage      = "/mnt/c/Users/nelso/dev/flatiron/hollypop"
   spec.license       = "MIT"
 

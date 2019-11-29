@@ -1,4 +1,5 @@
 #! /usr/bin/env ruby
 
+require './lib/hollypop'
 
-HollyPop::Cli.call
+HollyPop::Cli.new.call
