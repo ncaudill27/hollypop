@@ -10,10 +10,11 @@ class Artist
         @@all.find{|artist| artist.name == name}
     end
 
-    attr_accessor :name
+    attr_accessor :name, :movies
    
     def initialize(name)
         @name = name
+        @movies = []
         @@all << self
     end
 

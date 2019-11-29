@@ -3,6 +3,8 @@
 require './lib/hollypop'
 
 Artist.new("Hugh Jackman")
-Artist.new("Ryan Reynolds")
+ryan = Artist.new("Ryan Reynolds")
+movies = ["Deadpool", "The Proposal", "Self/less"]
+ryan.movies << movies
 
 HollyPop::Cli.new.call
