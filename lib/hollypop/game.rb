@@ -26,12 +26,18 @@ class HollyPop::Game
             case input
 
             when "pop me"
-                @points += new_question
+                begin
+                    @points += new_question
+                rescue TypeError
+                    return score
+                    HollyPop::Cli.menu
+                end
                 puts "Current score: #{self.points}"
             when "new artist"
                 puts HollyPop::Artist.all_names
                 new_artist
             when "new game"
+                
                 HollyPop::Cli.new.call
             when "exit"
                 exit
@@ -51,6 +57,9 @@ class HollyPop::Game
     def new_question
         question = HollyPop::Question.new(@artist)
         question.challenge
-        question.points
+    end
+
+    def score
+        @points
     end
 end

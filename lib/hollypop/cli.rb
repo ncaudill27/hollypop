@@ -1,5 +1,10 @@
 class HollyPop::Cli
 
+    attr_accessor :highscore
+    def initialize
+        @highscore = 0
+    end
+
     def call
         puts "Welcome to HollyPop!"
         menu
@@ -17,6 +22,11 @@ class HollyPop::Cli
 
             when "new game"
                 active_game = HollyPop::Game.new
+                if active_game.score >  @highscore# && active_game.score != nil
+                    self.highscore = active_game.score
+                end
+                puts "High Score: #{self.highscore}"
+                menu
             when 'exit'
                 exit
             end
