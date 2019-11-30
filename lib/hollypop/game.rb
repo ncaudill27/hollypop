@@ -22,7 +22,13 @@ class HollyPop::Game
             case input
 
             when "quiz"
-                break if hollypop == 0
+                begin
+                    @points += new_question
+                rescue TypeError
+                    return score
+                    HollyPop::Cli.main_menu
+                end
+                puts "Current score: #{@points}"
             when "new artist"
                 new_artist
             when "new game"
@@ -40,16 +46,6 @@ class HollyPop::Game
         print "\t*New Artist*"
         print "\t*New Game*"
         puts "\t*Exit*"
-    end
-    
-    def hollypop
-        begin
-            @points += new_question
-        rescue TypeError
-            return score
-            HollyPop::Cli.main_menu
-        end
-        puts "Current score: #{self.points}"
     end
 
     def new_question

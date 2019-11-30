@@ -46,7 +46,7 @@ class HollyPop::Cli
     end
 
     def highscore
-        puts "High Score: #{@highscore}"
+        puts "Current High Score: #{@highscore}"
     end
 
 end
