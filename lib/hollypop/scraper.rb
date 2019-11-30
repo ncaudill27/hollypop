@@ -2,13 +2,13 @@ class HollyPop::Scraper
 
     attr_accessor :doc
 
-    def initialize(url = 'https://m.imdb.com/chart/starmeter/?ref_=nv_cel_m')
+    def initialize(url)
         @doc = Nokogiri::HTML(open(url))
     end
 
     def artist_list
         @doc.css("div.row.chart-row").collect do |artist|
-            artist.css('h4').collect{|single| single.text }
+            artist.css('h4').collect{|single| single.text.strip }
         end.flatten
     end
 

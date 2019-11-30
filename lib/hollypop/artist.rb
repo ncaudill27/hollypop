@@ -16,20 +16,27 @@ class HollyPop::Artist
     attr_accessor :name, :url, :movies
 
     #! Initialize for testing
-    def initialize(name)
-        @name = name
-        @movies = []
-        @@all << self
-    end
-    
-    #! Finished intialize
-    # def initialize(info)
-    #     info.each{|key, value| self.send(("#{key}="), value)} 
+    # def initialize(name)
+    #     @name = name
     #     @movies = []
     #     @@all << self
     # end
+    
+    #! Finished intialize
+    def initialize(info)
+        info.each{|key, value| self.send(("#{key}="), value)} 
+        @movies = []
+        @@all << self
+    end
 
     def random_movie
         @movies[rand(@movies.size)]
+    end
+
+    def add_movies
+        finder = HollyPop::Scraper.new('https://m.imdb.com' + self.url)
+        self.movies = finder.doc.css('ul .ellipse a').collect do |movie|
+            movie.text.strip.chomp
+        end
     end
 end 
