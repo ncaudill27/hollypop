@@ -12,27 +12,41 @@ class HollyPop::Cli
     
     def main_menu
         # Allow choice of next question, new artist, exit
-        puts "What would you like do to?"
-        puts "New game?"
-        puts "Type exit at any time"
+        main_greet
         input = nil
         while input != 'exit'
+            print "> "
             input = gets.strip.downcase
             case input
 
             when "new game"
-                active_game = HollyPop::Game.new
-                if active_game.score >  @highscore# && active_game.score != nil
-                    self.highscore = active_game.score
-                end
-                puts "High Score: #{self.highscore}"
-                main_menu
+                start_game
             when 'high score'
-                puts "High Score: #{self.highscore}"
+                highscore
             when 'exit'
                 exit
             end
         end
+    end
+
+    def main_greet
+        puts "What would you like do to?"
+        print "*New Game*"
+        print "\t*High Score*"
+        puts "\t*Exit*"
+    end
+
+    def start_game
+        active_game = HollyPop::Game.new
+        if active_game.score >  @highscore# && active_game.score != nil
+            @highscore = active_game.score
+        end
+        highscore
+        main_menu
+    end
+
+    def highscore
+        puts "High Score: #{@highscore}"
     end
 
 end

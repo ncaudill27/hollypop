@@ -9,9 +9,7 @@ class HollyPop::Game
 
     def intro
         puts "Which artist would you like to choose?"
-        puts HollyPop::Artist.all_names
-        input = gets.chomp
-        @artist = HollyPop::Artist.find(input)
+        new_artist
         game_menu
     end
 
@@ -19,16 +17,17 @@ class HollyPop::Game
         input = nil
         while input != 'exit'
             game_greet
+            print "> "
             input = gets.strip.downcase
             case input
 
-            when "pop me"
-                hollypop
+            when "quiz"
+                break if hollypop == 0
             when "new artist"
                 new_artist
             when "new game"
                 return score
-                self.game_menu
+                HollyPop::Game.new
             when "exit"
                 exit
             end
@@ -37,9 +36,10 @@ class HollyPop::Game
 
     def game_greet
         puts "Current artist: #{@artist.name}"
-        puts "Pop you?"
-        puts "New artist?"
-        puts "New game?"
+        print "*Quiz*"
+        print "\t*New Artist*"
+        print "\t*New Game*"
+        puts "\t*Exit*"
     end
     
     def hollypop
@@ -47,7 +47,7 @@ class HollyPop::Game
             @points += new_question
         rescue TypeError
             return score
-            HollyPop::Cli.game_menu
+            HollyPop::Cli.main_menu
         end
         puts "Current score: #{self.points}"
     end
@@ -66,8 +66,6 @@ class HollyPop::Game
             puts "Invalid name"
         end
     end
-
-
 
     def score
         @points
