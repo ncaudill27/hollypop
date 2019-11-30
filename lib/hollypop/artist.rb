@@ -13,10 +13,10 @@ class HollyPop::Artist
         @@all.find{|artist| artist.name == name}
     end
 
-    attr_accessor :name, :movies
+    attr_accessor :name, :url, :movies
    
-    def initialize(name)
-        @name = name
+    def initialize(info)
+        info.each{|key, value| self.send(("#{key}="), value)} 
         @movies = []
         @@all << self
     end

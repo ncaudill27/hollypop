@@ -16,7 +16,7 @@ class HollyPop::Game
     end
 
     def menu
-    input = nil
+        input = nil
         while input != 'exit'
             puts "Current artist: #{@artist.name}"
             puts "Pop you?"

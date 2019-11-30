@@ -1,4 +1,6 @@
 require "pry"
+require "nokogiri"
+require "open-uri"
 require_relative "./hollypop/version"
 
 module HollyPop
@@ -10,3 +12,4 @@ require_relative "./hollypop/cli"
 require_relative "./hollypop/artist"
 require_relative "./hollypop/question"
 require_relative "./hollypop/game"
+require_relative "./hollypop/scraper"

@@ -9,7 +9,10 @@ class HollyPop::Question
 
     def challenge
         puts "Which movie does #{@artist.name} appear in?"
-        @artist.movies.each{|elem| puts elem}
+        puts @artist.random_movie
+        puts other_artist.random_movie
+        puts other_artist.random_movie
+        puts other_artist.random_movie
         input = gets.chomp
         if @artist.movies.include?(input)
             puts "Nice!"
@@ -18,15 +21,45 @@ class HollyPop::Question
             puts "Nice try!"
         end
     end
-
-    def user_format
-        puts "#{@artist.random_movie} | #{other_artist.random_movie} "
-        puts "----------------------"
-        puts "#{other_artist.random_movie} | #{other_artist.random_movie} "
-    end
-
+    
+    
     def other_artist
         all_others = HollyPop::Artist.all.select{|artist| artist.name != @artist.name}
         all_others[rand(all_others.size)]
     end
+    
+ #TODO Figure how to print question positions at random
+    # def generate_format
+    #     formats = {
+    #         1 => user_format1,
+    #         2 => user_format2,
+    #         3 => user_format3,
+    #         4 => user_format4
+    #     }
+    #     formats[rand(4)]
+    # end
+    # def user_format1
+    #     puts "#{@artist.random_movie} | #{other_artist.random_movie} "
+    #     puts "----------------------"
+    #     puts "#{other_artist.random_movie} | #{other_artist.random_movie} "
+    # end
+
+    # def user_format2
+    #     puts " #{other_artist.random_movie} | #{@artist.random_movie} "
+    #     puts "----------------------"
+    #     puts "#{other_artist.random_movie} | #{other_artist.random_movie} "
+    # end
+
+    # def user_format3
+    #     puts " #{other_artist.random_movie} | #{other_artist.random_movie} "
+    #     puts "----------------------"
+    #     puts "#{@artist.random_movie} | #{other_artist.random_movie} "
+    # end
+
+    # def user_format4
+    #     puts " #{other_artist.random_movie} | #{other_artist.random_movie} "
+    #     puts "----------------------"
+    #     puts "#{other_artist.random_movie} | #{@artist.random_movie} "
+    # end
+
 end
