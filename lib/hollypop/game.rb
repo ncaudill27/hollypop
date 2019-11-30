@@ -54,13 +54,24 @@ class HollyPop::Game
     end
     
     def new_artist
-        puts HollyPop::Artist.all_names
+        puts game_artist_names
         input = gets.chomp
         if HollyPop::Artist.all_names.include?(input)
             @artist = HollyPop::Artist.find(input)
         else
             puts "Invalid name"
         end
+    end
+
+    def game_artists
+        HollyPop::Artist.game_list
+    end
+    def prep_game
+        game_artists.each{|artist| artist.add_movies}
+    end
+
+    def game_artist_names
+        game_artists.collect{|artist| artist.name}
     end
 
     def score

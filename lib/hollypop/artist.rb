@@ -13,6 +13,16 @@ class HollyPop::Artist
         @@all.find{|artist| artist.name == name}
     end
 
+    def self.game_list
+        [
+        all[rand(all.size)],
+        all[rand(all.size)],
+        all[rand(all.size)],
+        all[rand(all.size)],
+        all[rand(all.size)]
+        ]
+    end
+
     attr_accessor :name, :url, :movies
 
     #! Initialize for testing
