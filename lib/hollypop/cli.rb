@@ -7,10 +7,10 @@ class HollyPop::Cli
 
     def call
         puts "Welcome to HollyPop!"
-        menu
+        main_menu
     end
     
-    def menu
+    def main_menu
         # Allow choice of next question, new artist, exit
         puts "What would you like do to?"
         puts "New game?"
@@ -26,7 +26,9 @@ class HollyPop::Cli
                     self.highscore = active_game.score
                 end
                 puts "High Score: #{self.highscore}"
-                menu
+                main_menu
+            when 'high score'
+                puts "High Score: #{self.highscore}"
             when 'exit'
                 exit
             end

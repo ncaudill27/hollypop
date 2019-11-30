@@ -14,12 +14,20 @@ class HollyPop::Artist
     end
 
     attr_accessor :name, :url, :movies
-   
-    def initialize(info)
-        info.each{|key, value| self.send(("#{key}="), value)} 
+
+    #! Initialize for testing
+    def initialize(name)
+        @name = name
         @movies = []
         @@all << self
     end
+    
+    #! Finished intialize
+    # def initialize(info)
+    #     info.each{|key, value| self.send(("#{key}="), value)} 
+    #     @movies = []
+    #     @@all << self
+    # end
 
     def random_movie
         @movies[rand(@movies.size)]

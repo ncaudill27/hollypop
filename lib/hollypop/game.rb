@@ -12,40 +12,53 @@ class HollyPop::Game
         puts HollyPop::Artist.all_names
         input = gets.chomp
         @artist = HollyPop::Artist.find(input)
-        menu
+        game_menu
     end
 
-    def menu
+    def game_menu
         input = nil
         while input != 'exit'
-            puts "Current artist: #{@artist.name}"
-            puts "Pop you?"
-            puts "New artist?"
-            puts "New game?"
+            game_greet
             input = gets.strip.downcase
             case input
 
             when "pop me"
-                begin
-                    @points += new_question
-                rescue TypeError
-                    return score
-                    HollyPop::Cli.menu
-                end
-                puts "Current score: #{self.points}"
+                hollypop
             when "new artist"
-                puts HollyPop::Artist.all_names
                 new_artist
             when "new game"
-                
-                HollyPop::Cli.new.call
+                return score
+                self.game_menu
             when "exit"
                 exit
             end
         end
     end
 
+    def game_greet
+        puts "Current artist: #{@artist.name}"
+        puts "Pop you?"
+        puts "New artist?"
+        puts "New game?"
+    end
+    
+    def hollypop
+        begin
+            @points += new_question
+        rescue TypeError
+            return score
+            HollyPop::Cli.game_menu
+        end
+        puts "Current score: #{self.points}"
+    end
+
+    def new_question
+        question = HollyPop::Question.new(@artist)
+        question.challenge
+    end
+    
     def new_artist
+        puts HollyPop::Artist.all_names
         input = gets.chomp
         if HollyPop::Artist.all_names.include?(input)
             @artist = HollyPop::Artist.find(input)
@@ -54,10 +67,7 @@ class HollyPop::Game
         end
     end
 
-    def new_question
-        question = HollyPop::Question.new(@artist)
-        question.challenge
-    end
+
 
     def score
         @points

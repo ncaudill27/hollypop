@@ -8,8 +8,8 @@ scarlett = HollyPop::Artist.new("Scarlett Johansenn")
 ryan.movies = ["Deadpool", "The Proposal", "Self/less"]
 hugh.movies = ["Les Miserables", "Logan", "Chappie"]
 scarlett.movies = ["Avengers: Infinity Wars", "Ghost in the Shell", "Lucy"]
-scrape = HollyPop::Scraper.new
-scrape.create_artists
+# scrape = HollyPop::Scraper.new
+# scrape.create_artists
 
 
 
