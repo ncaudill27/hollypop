@@ -1,9 +1,11 @@
 class HollyPop::Game
 
-    attr_accessor :artist, :points
+    attr_accessor :current_artist, :artists, :points
 
     def initialize
         @points = 0
+        @artists = game_artists
+        prep_game
         intro
     end
 
@@ -41,7 +43,7 @@ class HollyPop::Game
     end
 
     def game_greet
-        puts "Current artist: #{@artist.name}"
+        puts "Current artist: #{@current_artist.name}"
         print "*Quiz*"
         print "\t*New Artist*"
         print "\t*New Game*"
@@ -49,15 +51,15 @@ class HollyPop::Game
     end
 
     def new_question
-        question = HollyPop::Question.new(@artist)
+        question = HollyPop::Question.new(@current_artist, @artists)
         question.challenge
     end
     
     def new_artist
         puts game_artist_names
         input = gets.chomp
-        if HollyPop::Artist.all_names.include?(input)
-            @artist = HollyPop::Artist.find(input)
+        if game_artist_names.include?(input)
+            @current_artist = HollyPop::Artist.find(input)
         else
             puts "Invalid name"
         end
@@ -66,12 +68,13 @@ class HollyPop::Game
     def game_artists
         HollyPop::Artist.game_list
     end
+
     def prep_game
-        game_artists.each{|artist| artist.add_movies}
+        @artists.each{|artist| artist.add_movies}
     end
 
     def game_artist_names
-        game_artists.collect{|artist| artist.name}
+        @artists.collect{|artist| artist.name}
     end
 
     def score

@@ -2,8 +2,9 @@ class HollyPop::Question
 
     attr_accessor :artist, :points
 
-    def initialize(artist)
+    def initialize(artist, artists)
         @artist = artist
+        @artists = artists
         @points = 1
     end
 
@@ -24,7 +25,7 @@ class HollyPop::Question
     
     
     def other_artist
-        all_others = HollyPop::Artist.all.select{|artist| artist.name != @artist.name}
+        all_others = @artists.select{|artist| artist.name != @artist.name}
         all_others[rand(all_others.size)]
     end
     
