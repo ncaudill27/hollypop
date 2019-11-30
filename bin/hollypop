@@ -2,8 +2,13 @@
 
 require './lib/hollypop'
 
-HollyPop::Artist.new("Hugh Jackman")
+hugh = HollyPop::Artist.new("Hugh Jackman")
 ryan = HollyPop::Artist.new("Ryan Reynolds")
+scarlett = HollyPop::Artist.new("Scarlett Johansenn")
 ryan.movies = ["Deadpool", "The Proposal", "Self/less"]
+hugh.movies = ["Les Miserables", "Logan", "Chappie"]
+scarlett.movies = ["Avengers: Infinity Wars", "Ghost in the Shell", "Lucy"]
+
+binding.pry
 
 HollyPop::Cli.new.call

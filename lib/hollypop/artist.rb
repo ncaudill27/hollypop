@@ -21,4 +21,7 @@ class HollyPop::Artist
         @@all << self
     end
 
+    def random_movie
+        @movies[rand(@movies.size)]
+    end
 end 

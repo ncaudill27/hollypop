@@ -19,4 +19,14 @@ class HollyPop::Question
         end
     end
 
+    def user_format
+        puts "#{@artist.random_movie} | #{other_artist.random_movie} "
+        puts "----------------------"
+        puts "#{other_artist.random_movie} | #{other_artist.random_movie} "
+    end
+
+    def other_artist
+        all_others = HollyPop::Artist.all.select{|artist| artist.name != @artist.name}
+        all_others[rand(all_others.size)]
+    end
 end
