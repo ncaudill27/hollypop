@@ -10,11 +10,6 @@ class HollyPop::Game
         game_menu
     end
 
-    def intro
-        choose_artist
-        game_menu
-    end
-
     def game_menu
         input = nil
         while input != 'exit'
