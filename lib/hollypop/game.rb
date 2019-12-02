@@ -27,7 +27,8 @@ class HollyPop::Game
                     puts "You lose."
                     HollyPop::Cli.main_menu
                 end
-                puts "Current score: #{@points}\n"
+                puts "Current score: #{@points}"
+                puts "Current artist: #{@artist}"
             when "new artist"
                 choose_artist
             when "new game"
@@ -57,7 +58,7 @@ class HollyPop::Game
         puts "Which artist would you like to choose?"
         puts "\n"
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
-        input = prompt.select("Current artist:", game_artists_names, echo: false)
+        input = prompt.select("Current artist:", game_artists_names)
         @current_artist = HollyPop::Artist.find(input)
     end
 
