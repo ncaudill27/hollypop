@@ -25,14 +25,6 @@ class HollyPop::Artist
 
     attr_accessor :name, :url, :movies
 
-    #! Initialize for testing
-    # def initialize(name)
-    #     @name = name
-    #     @movies = []
-    #     @@all << self
-    # end
-    
-    #! Finished intialize
     def initialize(info)
         info.each{|key, value| self.send(("#{key}="), value)} 
         @movies = []
@@ -43,6 +35,7 @@ class HollyPop::Artist
         @movies[rand(@movies.size)]
     end
 
+    #! Do I want this scraping responsibility in Artist class?
     def add_movies
         finder = HollyPop::Scraper.new('https://m.imdb.com' + self.url)
         self.movies = finder.doc.css('ul .ellipse a').collect do |movie|
