@@ -15,14 +15,7 @@ class HollyPop::Question
         print "> "
         input = gets.chomp
         puts "\n"
-        if @artist.movies.include?(input)
-            puts "Nice!"
-            puts "\n"
-            return self.points
-        else
-            puts "Nice try!"
-            puts "\n"
-        end
+        check_answer(input)
     end
 
     def randomize_question
@@ -31,6 +24,17 @@ class HollyPop::Question
         other_artist.random_movie,
         other_artist.random_movie]
         answers.shuffle
+    end
+
+    def check_answer(input)
+        if @artist.movies.include?(input)
+            puts "Nice!"
+            puts "\n"
+            return self.points
+        else
+            puts "Nice try!"
+            puts "\n"
+        end
     end
 
     def other_artist
