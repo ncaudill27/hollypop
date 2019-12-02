@@ -24,6 +24,7 @@ class HollyPop::Game
                     @points += new_question
                 rescue TypeError
                     return score
+                    puts "You lose."
                     HollyPop::Cli.main_menu
                 end
                 puts "Current score: #{@points}\n"
@@ -41,7 +42,6 @@ class HollyPop::Game
     end
 
     def list_options
-        puts "Current artist: #{@current_artist.name}"
         print "*Quiz*"
         print "\t*New Artist*"
         print "\t*New Game*"
@@ -56,19 +56,9 @@ class HollyPop::Game
     def choose_artist
         puts "Which artist would you like to choose?"
         puts "\n"
-        puts game_artists_names
-        print "> "
-        input = gets.chomp
-        puts "\n"
-        if game_artists_names.include?(input)
-            @current_artist = HollyPop::Artist.find(input)
-        elsif input == 'exit'
-            exit
-        else
-            puts "Invalid name"
-            puts "\n"
-            choose_artist
-        end
+        prompt = TTY::Prompt.new(symbols: {marker: '>'})
+        input = prompt.select("Current artist:", game_artists_names, echo: false)
+        @current_artist = HollyPop::Artist.find(input)
     end
 
     def game_artists
@@ -80,7 +70,7 @@ class HollyPop::Game
     end
 
     def game_artists_names
-        @artists.collect{|artist| artist.name}
+        @artists.collect{|artist| artist.name}.uniq
     end
 
     def score
