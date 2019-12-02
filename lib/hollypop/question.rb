@@ -9,20 +9,19 @@ class HollyPop::Question
     end
 
     def challenge
+        prompt = TTY::Prompt.new(symbols: {marker: '>'})
         puts "Which movie does #{@artist.name} appear in?"
-        puts "\n"
-        randomize_question.each{|answer| puts answer}
-        print "> "
-        input = gets.chomp
-        puts "\n"
+        input = prompt.select("Choices:", quiz_choices)
         check_answer(input)
     end
 
-    def randomize_question
-        answers = [@artist.random_movie,
-        other_artist.random_movie,
-        other_artist.random_movie,
-        other_artist.random_movie]
+    def quiz_choices
+        answers = [
+            @artist.random_movie,
+            other_artist.random_movie,
+            other_artist.random_movie,
+            other_artist.random_movie
+        ]
         answers.shuffle
     end
 

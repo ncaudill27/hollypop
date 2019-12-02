@@ -1,6 +1,7 @@
 require "pry"
 require "nokogiri"
 require "open-uri"
+require "tty-prompt"
 require_relative "./hollypop/version"
 
 module HollyPop
