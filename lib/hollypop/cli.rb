@@ -17,6 +17,7 @@ class HollyPop::Cli
         while input != 'exit'
             print "> "
             input = gets.strip.downcase
+            puts "\n"
             case input
 
             when "new game"
@@ -25,6 +26,8 @@ class HollyPop::Cli
                 highscore
             when 'exit'
                 exit
+            else
+                "Invalid input. Try again."
             end
         end
     end

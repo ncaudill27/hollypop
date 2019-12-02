@@ -10,16 +10,21 @@ class HollyPop::Question
 
     def challenge
         puts "Which movie does #{@artist.name} appear in?"
+        puts "\n"
         puts @artist.random_movie
         puts other_artist.random_movie
         puts other_artist.random_movie
         puts other_artist.random_movie
+        print "> "
         input = gets.chomp
+        puts "\n"
         if @artist.movies.include?(input)
             puts "Nice!"
+            puts "\n"
             return self.points
         else
             puts "Nice try!"
+            puts "\n"
         end
     end
     
