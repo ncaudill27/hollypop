@@ -11,7 +11,7 @@ class HollyPop::Cli
     end
 
     def welcome
-        puts spray("Welcome to...")
+        puts spray("Welcome to...").char_print
         sleep 1.5
         puts candy("================================================================")
         sleep 0.2

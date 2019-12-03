@@ -29,10 +29,10 @@ class HollyPop::Question
     def check_answer(input)
         puts
         if @artist.movies.include?(input)
-            puts "Awesome! You got it! "
+            puts candy("Awesome! You got it!")
             return self.points
         else
-            puts "Nice try!"
+            puts spray("Nice try!")
         end
     end
 

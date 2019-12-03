@@ -5,7 +5,7 @@ module HollyPop::Stylin
             self.each_char{ |c| putc c; $stdout.flush; sleep 0.025 }
         end
     end
-
+    
     module Colors
         def candy(string) 
             colorized = string.each_char.collect do |c|
@@ -33,4 +33,8 @@ end
 class HollyPop::Question
     extend HollyPop::Stylin::Motion
     include HollyPop::Stylin::Colors
+end
+
+class String
+    include HollyPop::Stylin::Motion
 end
