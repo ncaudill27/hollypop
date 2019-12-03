@@ -2,6 +2,7 @@ require "pry"
 require "nokogiri"
 require "open-uri"
 require "tty-prompt"
+require "paint"
 require_relative "./hollypop/version"
 
 module HollyPop
@@ -14,3 +15,4 @@ require_relative "./hollypop/artist"
 require_relative "./hollypop/question"
 require_relative "./hollypop/game"
 require_relative "./hollypop/scraper"
+require_relative "./hollypop/style"

@@ -43,12 +43,12 @@ class HollyPop::Game
     end
 
     def list_options
-        puts "=============================================="
-        print "*Quiz*"
-        print "\t*New Artist*"
-        print "\t*New Game*"
-        puts "\t*Exit*"
-        puts "=============================================="
+        puts candy("==============================================")
+        print candy("*Quiz*")
+        print candy("\t*New Artist*")
+        print candy("\t*New Game*")
+        puts candy("\t*Exit*")
+        puts candy("==============================================")
     end
 
     def new_question
@@ -57,8 +57,8 @@ class HollyPop::Game
     end
     
     def choose_artist
-        puts "Which artist would you like to choose?"
-        puts "~~~~~~~~~~~~~~~~~~~~".each_char { |c| putc c; $stdout.flush; sleep 0.025 }
+        puts candy("Which artist would you like to choose?")
+        puts candy("~~~~~~~~~~~~~~~~~~~~".each_char { |c| putc c; $stdout.flush; sleep 0.025 })
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
         input = prompt.select("Current artist:", game_artists_names)
         @current_artist = HollyPop::Artist.find(input)
