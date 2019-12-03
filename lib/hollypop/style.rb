@@ -1,6 +1,6 @@
 module HollyPop::Stylin
 
-    module Motion
+    module Motion #! Broken
         def char_print
             self.each_char{ |c| putc c; $stdout.flush; sleep 0.025 }
         end
