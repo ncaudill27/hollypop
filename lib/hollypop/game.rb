@@ -5,7 +5,7 @@ class HollyPop::Game
     def initialize
         @points = 0
         @artists = game_artists
-        add_movies 
+        add_movies
         choose_artist
         game_menu
     end
@@ -16,15 +16,15 @@ class HollyPop::Game
             list_options
             print "> "
             input = gets.strip.downcase
-            puts "\n"
+            puts 
             case input
 
             when "quiz"
                 begin
                     @points += new_question
                 rescue TypeError
-                    return score
                     puts "You lose."
+                    return score
                     HollyPop::Cli.main_menu
                 end
                 puts "Current score: #{@points}"
@@ -43,10 +43,12 @@ class HollyPop::Game
     end
 
     def list_options
+        puts "=============================================="
         print "*Quiz*"
         print "\t*New Artist*"
         print "\t*New Game*"
         puts "\t*Exit*"
+        puts "=============================================="
     end
 
     def new_question
@@ -56,7 +58,7 @@ class HollyPop::Game
     
     def choose_artist
         puts "Which artist would you like to choose?"
-        puts "\n"
+        puts "~~~~~~~~~~~~~~~~~~~~".each_char { |c| putc c; $stdout.flush; sleep 0.025 }
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
         input = prompt.select("Current artist:", game_artists_names)
         @current_artist = HollyPop::Artist.find(input)

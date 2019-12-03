@@ -6,25 +6,38 @@ class HollyPop::Cli
     end
 
     def call
-        puts "Welcome to HollyPop!"
-        puts "  __   __ _____ __    ___  ___  __________ _____ _______  __ "
-        puts " |  | |  ||    || |   | |  \\  \\/  /|   *  ||    ||   *  ||  |"
-        puts " |  |_|  || /\\ || |   | |   \\    / |   ___|| /\\ ||   ___||  | "
-        puts " |  ___  || \\/ || |   | |    \\  /  |  |    | \\/ ||  |    |__|  "
-        puts " |  | |  ||    || |__ | |__  / /   |  |    |    ||  |     __"
-        puts " |__| |__||____||____||____|/_/    |__|    |____||__|    |__| "
-        
+        welcome    
         main_menu
+    end
+
+    def welcome
+        puts "Welcome to..."
+        sleep 1.5
+        puts "================================================================"
+        sleep 0.2
+        puts "  __   __ _____ __    ___  ___  __________ _____ _______  __ "
+        sleep 0.2
+        puts " |  | |  ||    || |   | |  \\  \\/  /|   *  ||    ||   *  ||  |"
+        sleep 0.2
+        puts " |  |_|  || /\\ || |   | |   \\    / |   ___|| /\\ ||   ___||  | "
+        sleep 0.2
+        puts " |  ___  || \\/ || |   | |    \\  /  |  |    | \\/ ||  |    |__|  "
+        sleep 0.2
+        puts " |  | |  ||    || |__ | |__  / /   |  |    |    ||  |     __"
+        sleep 0.2
+        puts " |__| |__||____||____||____|/_/    |__|    |____||__|    |__| "
+        sleep 0.2
+        puts "================================================================"
     end
     
     def main_menu
-        # Allow choice of next question, new artist, exit
+        puts 
         main_greet
         input = nil
         while input != 'exit'
             print "> "
             input = gets.strip.downcase
-            puts "\n"
+            puts 
             case input
 
             when "new game"
@@ -41,9 +54,11 @@ class HollyPop::Cli
 
     def main_greet
         puts "What would you like do to?"
+        puts "======================================="
         print "*New Game*"
         print "\t*High Score*"
         puts "\t*Exit*"
+        puts "======================================="
     end
 
     def start_game

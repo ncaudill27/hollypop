@@ -11,6 +11,7 @@ class HollyPop::Question
     def challenge
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
         puts "Which movie does #{@artist.name} appear in?"
+        puts "~~~~~~~~~~~~~~~~~~~~".each_char { |c| putc c; $stdout.flush; sleep 0.025 }
         input = prompt.select("Choices:", quiz_choices)
         check_answer(input)
     end
@@ -26,13 +27,12 @@ class HollyPop::Question
     end
 
     def check_answer(input)
+        puts
         if @artist.movies.include?(input)
-            puts "Nice!"
-            puts "\n"
+            puts "Awesome! You got it! ".each_char { |c| putc c; $stdout.flush; sleep 0.10 }
             return self.points
         else
             puts "Nice try!"
-            puts "\n"
         end
     end
 
