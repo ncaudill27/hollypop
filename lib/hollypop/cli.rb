@@ -11,7 +11,7 @@ class HollyPop::Cli
     end
 
     def welcome
-        puts candy("Welcome to...")
+        puts spray("Welcome to...")
         sleep 1.5
         puts candy("================================================================")
         sleep 0.2
@@ -32,9 +32,9 @@ class HollyPop::Cli
     
     def main_menu
         puts 
-        main_greet
         input = nil
         while input != 'exit'
+            main_greet
             print "> "
             input = gets.strip.downcase
             puts 
@@ -46,18 +46,16 @@ class HollyPop::Cli
                 highscore
             when 'exit'
                 exit
-            else
-                "Invalid input. Try again."
             end
         end
     end
 
     def main_greet
-        puts candy("What would you like do to?")
+        puts spray("What would you like do to?")
         puts candy("=======================================")
-        print candy("*New Game*")
-        print candy("\t*High Score*")
-        puts candy("\t*Exit*")
+        print spray("*New Game*")
+        print spray("\t*High Score*")
+        puts spray("\t*Exit*")
         puts candy("=======================================")
     end
 
@@ -71,7 +69,7 @@ class HollyPop::Cli
     end
 
     def highscore
-        puts "Current High Score: #{@highscore}"
+        puts spray("Current High Score: #{@highscore}")
     end
 
 end

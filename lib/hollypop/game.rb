@@ -23,12 +23,12 @@ class HollyPop::Game
                 begin
                     @points += new_question
                 rescue TypeError
-                    puts "You lose."
+                    puts spray("You lose.")
                     return score
                     HollyPop::Cli.main_menu
                 end
-                puts "Current score: #{@points}"
-                puts "Current artist: #{@artist}"
+                puts spray("Current score: #{@points}")
+                puts spray("Current artist: #{@artist}")
             when "new artist"
                 choose_artist
             when "new game"
@@ -36,18 +36,16 @@ class HollyPop::Game
                 HollyPop::Game.new
             when "exit"
                 exit
-            else
-                "Invalid input. Try again."
             end
         end
     end
 
     def list_options
         puts candy("==============================================")
-        print candy("*Quiz*")
-        print candy("\t*New Artist*")
-        print candy("\t*New Game*")
-        puts candy("\t*Exit*")
+        print spray("*Quiz*")
+        print spray("\t*New Artist*")
+        print spray("\t*New Game*")
+        puts spray("\t*Exit*")
         puts candy("==============================================")
     end
 
@@ -57,8 +55,8 @@ class HollyPop::Game
     end
     
     def choose_artist
-        puts candy("Which artist would you like to choose?")
-        puts candy("~~~~~~~~~~~~~~~~~~~~".each_char { |c| putc c; $stdout.flush; sleep 0.025 })
+        puts spray("Which artist would you like to choose?")
+        puts candy("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
         input = prompt.select("Current artist:", game_artists_names)
         @current_artist = HollyPop::Artist.find(input)

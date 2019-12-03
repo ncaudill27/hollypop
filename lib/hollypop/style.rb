@@ -1,19 +1,36 @@
 module HollyPop::Stylin
 
-    def candy(string) 
-        Paint[string, Paint.random, :bold]
+    module Motion
+        def char_print
+            self.each_char{ |c| putc c; $stdout.flush; sleep 0.025 }
+        end
     end
 
+    module Colors
+        def candy(string) 
+            colorized = string.each_char.collect do |c|
+                Paint[c, Paint.random, :bright]
+            end
+            colorized.join
+        end
+        
+        def spray(string)
+            Paint[string, Paint.random, :bright]
+        end
+    end
 end
 
 class HollyPop::Cli
-    include HollyPop::Stylin
+    extend HollyPop::Stylin::Motion
+    include HollyPop::Stylin::Colors
 end
 
 class HollyPop::Game
-    include HollyPop::Stylin
+    extend HollyPop::Stylin::Motion
+    include HollyPop::Stylin::Colors
 end
 
 class HollyPop::Question
-    include HollyPop::Stylin
+    extend HollyPop::Stylin::Motion
+    include HollyPop::Stylin::Colors
 end

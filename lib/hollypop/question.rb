@@ -10,18 +10,18 @@ class HollyPop::Question
 
     def challenge
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
-        puts candy("Which movie does #{@artist.name} appear in?")
-        puts candy("~~~~~~~~~~~~~~~~~~~~".each_char { |c| putc c; $stdout.flush; sleep 0.025 })
+        puts spray("Which movie does #{@artist.name} appear in?")
+        puts candy("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         input = prompt.select("Choices:", quiz_choices)
         check_answer(input)
     end
 
     def quiz_choices
         answers = [
-            candy(@artist.random_movie),
-            candy(other_artist.random_movie),
-            candy(other_artist.random_movie),
-            candy(other_artist.random_movie)
+            @artist.random_movie,
+            other_artist.random_movie,
+            other_artist.random_movie,
+            other_artist.random_movie
         ]
         answers.shuffle
     end
@@ -29,7 +29,7 @@ class HollyPop::Question
     def check_answer(input)
         puts
         if @artist.movies.include?(input)
-            puts "Awesome! You got it! ".each_char { |c| putc c; $stdout.flush; sleep 0.10 }
+            puts "Awesome! You got it! "
             return self.points
         else
             puts "Nice try!"
