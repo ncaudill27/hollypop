@@ -12,5 +12,4 @@ scrape = HollyPop::Scraper.new('https://m.imdb.com/chart/starmeter/?ref_=nv_cel_
 scrape.create_artists
 
 
-
 HollyPop::Cli.new.call

@@ -39,7 +39,17 @@ class HollyPop::Artist
     def add_movies
         finder = HollyPop::Scraper.new('https://m.imdb.com' + self.url)
         self.movies = finder.doc.css('ul .ellipse a').collect do |movie|
-            movie.text.strip.chomp
+            created = HollyPop::Movie.new(movie.text.strip.chomp)
+            created.url = 'https://m.imdb.com' + movie.attribute('href').value
+            created
         end
+    end
+
+    def has_movie?(name)
+        @movies.any?{|movie| movie.name == name}
+    end
+
+    def find_movie(name)
+        @movies.find{|movie| movie.name == name}
     end
 end 

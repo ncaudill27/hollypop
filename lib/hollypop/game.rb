@@ -66,12 +66,12 @@ class HollyPop::Game
         HollyPop::Artist.game_list
     end
 
-    def add_movies
-        @artists.each{|artist| artist.add_movies}
-    end
-
     def game_artists_names
         @artists.collect{|artist| artist.name}.uniq
+    end
+    
+    def add_movies
+        @artists.each{|artist| artist.add_movies}
     end
 
     def score
