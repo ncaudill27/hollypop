@@ -34,12 +34,12 @@ class HollyPop::Cli
         puts 
         input = nil
         while input != 'exit'
-            main_greet
+            menu_options
             print "> "
             input = gets.strip.downcase
             puts 
             case input
-
+            #? Refactor with TTY::Prompt?
             when "new game"
                 start_game
             when 'high score'
@@ -50,7 +50,7 @@ class HollyPop::Cli
         end
     end
 
-    def main_greet
+    def menu_options
         spray("What would you like do to?\n").ducks
         puts candy("=======================================")
         sleep 0.2
@@ -64,7 +64,7 @@ class HollyPop::Cli
 
     def start_game
         active_game = HollyPop::Game.new
-        if active_game.score >  @highscore# && active_game.score != nil
+        if active_game.score >  @highscore
             @highscore = active_game.score
         end
         highscore

@@ -6,6 +6,7 @@ class HollyPop::Question
         @artist = artist
         @artists = artists
         @points = 1
+        #? Add challenge into initialize? Would relieve the .challenge call in #Game
     end
 
     def challenge

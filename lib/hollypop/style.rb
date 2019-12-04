@@ -1,6 +1,6 @@
 module HollyPop::Stylin
 
-    module Motion #! Broken
+    module Motion
         def ducks(speed = 0.025)
             self.each_char{ |c| putc c; sleep speed; $stdout.flush }
         end

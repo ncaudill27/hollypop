@@ -18,7 +18,7 @@ class HollyPop::Game
             input = gets.strip.downcase
             puts 
             case input
-
+            #? Refactor into a TTY::Prompt? Will lose some color. (Is that bad?)
             when "quiz"
                 begin
                     @points += new_question
