@@ -11,8 +11,8 @@ class HollyPop::Cli
     end
 
     def welcome
-        puts spray("Welcome to...").char_print
-        sleep 1.5
+        spray("Welcome to...\n").ducks
+        sleep 1
         puts candy("================================================================")
         sleep 0.2
         puts candy("  __   __ _____ __    ___  ___  __________ _____ _______  __ ")
@@ -51,10 +51,13 @@ class HollyPop::Cli
     end
 
     def main_greet
-        puts spray("What would you like do to?")
+        spray("What would you like do to?\n").ducks
         puts candy("=======================================")
+        sleep 0.2
         print spray("*New Game*")
+        sleep 0.2
         print spray("\t*High Score*")
+        sleep 0.2
         puts spray("\t*Exit*")
         puts candy("=======================================")
     end

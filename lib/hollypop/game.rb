@@ -23,7 +23,7 @@ class HollyPop::Game
                 begin
                     @points += new_question
                 rescue TypeError
-                    puts spray("You lose.")
+                    spray("You lose.\n", :red).ducks(0.2)
                     return score
                     HollyPop::Cli.main_menu
                 end
@@ -42,9 +42,13 @@ class HollyPop::Game
 
     def list_options
         puts candy("==============================================")
+        sleep 0.2
         print spray("*Quiz*")
+        sleep 0.2
         print spray("\t*New Artist*")
+        sleep 0.2
         print spray("\t*New Game*")
+        sleep 0.2
         puts spray("\t*Exit*")
         puts candy("==============================================")
     end
@@ -56,7 +60,7 @@ class HollyPop::Game
     
     def choose_artist
         puts spray("Which artist would you like to choose?")
-        puts candy("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        candy("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n").ducks(0.0005)
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
         input = prompt.select("Current artist:", game_artists_names)
         @current_artist = HollyPop::Artist.find(input)

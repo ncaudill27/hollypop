@@ -1,8 +1,8 @@
 module HollyPop::Stylin
 
     module Motion #! Broken
-        def char_print
-            self.each_char{ |c| putc c; $stdout.flush; sleep 0.025 }
+        def ducks(speed = 0.025)
+            self.each_char{ |c| putc c; sleep speed; $stdout.flush }
         end
     end
     
@@ -14,8 +14,8 @@ module HollyPop::Stylin
             colorized.join
         end
         
-        def spray(string)
-            Paint[string, Paint.random, :bright]
+        def spray(string, color = Paint.random)
+            Paint[string, color, :bright]
         end
     end
 end

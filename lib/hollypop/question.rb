@@ -10,8 +10,8 @@ class HollyPop::Question
 
     def challenge
         prompt = TTY::Prompt.new(symbols: {marker: '>'})
-        puts spray("Which movie does #{@artist.name} appear in?")
-        puts candy("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        spray("Which movie does #{@artist.name} appear in?\n").ducks
+        candy("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n").ducks(0.0005)
         input = prompt.select("Choices:", quiz_choices)
         check_answer(input)
     end
@@ -31,17 +31,17 @@ class HollyPop::Question
         if @artist.has_movie?(input)
             win(input)
         else
-            puts spray("Nice try!")
+            puts spray("Nice try!", :red)
         end
     end
 
     def win(name)
-        puts spray("Awesome! You got it!")
+        spray("Awesome! You got it!\n", :green).ducks
         winner = @artist.find_movie(name)
         winner.details
+        puts "A little about #{winner.name}:"
         puts "#{winner.description}"
         puts "Made in: #{winner.year}"
-        #TODO Scrape movie info
         return self.points
     end
 
