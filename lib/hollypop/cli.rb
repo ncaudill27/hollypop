@@ -44,6 +44,8 @@ class HollyPop::Cli
 
             when "new game"
                 start_game
+            when 'explore'
+                explore
             when 'exit'
                 exit
             end
@@ -52,21 +54,28 @@ class HollyPop::Cli
 
     def menu_options
         spray("What would you like do to?\n").ducks
-        puts candy("======================")
+        puts candy("======================================")
         sleep 0.2
         print spray("*New Game*")
         sleep 0.2
+        print spray("\t*Explore*")
+        sleep 0.2
         puts spray("\t*Exit*")
-        puts candy("======================")
+        puts candy("======================================")
     end
 
     def start_game
         active_game = HollyPop::Game.new
         if active_game.score >  @highscore
+            candy("New High Score!!!\n").ducks
             @highscore = active_game.score
         end
         highscore
         main_menu
+    end
+
+    def explore
+        HollyPop::Explore.new
     end
 
     def highscore

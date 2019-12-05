@@ -6,11 +6,11 @@ class HollyPop::Artist
         @@all
     end
     def self.all_names
-        @@all.collect{|artist| artist.name}
+        @@all.collect{|artist| artist.name.downcase}
     end
 
     def self.find(name)
-        @@all.find{|artist| artist.name == name}
+        @@all.find{|artist| artist.name.downcase == name}
     end
 
     def self.game_list
@@ -46,10 +46,10 @@ class HollyPop::Artist
     end
 
     def has_movie?(name)
-        @movies.any?{|movie| movie.name == name}
+        @movies.any?{|movie| movie.name.downcase == name}
     end
 
     def find_movie(name)
-        @movies.find{|movie| movie.name == name}
+        @movies.find{|movie| movie.name.downcase == name}
     end
 end 

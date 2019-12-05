@@ -35,6 +35,11 @@ class HollyPop::Question
     include HollyPop::Stylin::Colors
 end
 
+class HollyPop::Explore
+    extend HollyPop::Stylin::Motion
+    include HollyPop::Stylin::Colors
+end
+
 class String
     include HollyPop::Stylin::Motion
 end
