@@ -33,7 +33,6 @@ class HollyPop::Question
             win(input)
         else
             puts spray("Nice try!", :red)
-            0
         end
     end
 

@@ -2,9 +2,6 @@ class HollyPop::Movie
 
     attr_accessor :name, :url, :year, :description
 
-    def initialize(name)
-        @name = name
-    end
 
     def details
         scrape = HollyPop::Scraper.new(self.url)

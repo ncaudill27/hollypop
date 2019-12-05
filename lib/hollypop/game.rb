@@ -18,23 +18,19 @@ class HollyPop::Game
             input = gets.strip.downcase
             puts 
             case input
-            #? Refactor into a TTY::Prompt? Will lose some color. (Is that bad?)
+
             when "quiz"
-                
-                @points += new_question
-                # begin
-                # rescue TypeError
-                #     spray("You lose.\n", :red).ducks(0.2)
-                #     return score
-                #     HollyPop::Cli.main_menu
-                # end
+                begin
+                    @points += new_question
+                rescue TypeError
+                    spray("You lose.\n", :red).ducks(0.2)
+                    return score
+                    HollyPop::Cli.main_menu
+                end
                 puts spray("Current score: #{@points}")
                 puts spray("Current artist: #{@artist}")
             when "new artist"
                 choose_artist
-            # when "new game"
-            #     score
-            #     HollyPop::Game.new
             when "exit"
                 exit
             end
@@ -42,16 +38,14 @@ class HollyPop::Game
     end
 
     def list_options
-        puts candy("==============================================")
+        puts candy("==============================")
         sleep 0.2
         print spray("*Quiz*")
         sleep 0.2
         print spray("\t*New Artist*")
         sleep 0.2
-        # print spray("\t*New Game*")
-        # sleep 0.2
         puts spray("\t*Exit*")
-        puts candy("==============================================")
+        puts candy("==============================")
     end
 
     def new_question
