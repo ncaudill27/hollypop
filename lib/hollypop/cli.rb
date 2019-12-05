@@ -66,9 +66,9 @@ class HollyPop::Cli
 
     def start_game
         active_game = HollyPop::Game.new
-        if active_game.score >  @highscore
+        if active_game.points >  @highscore
             candy("New High Score!!!\n").ducks
-            @highscore = active_game.score
+            @highscore = active_game.points
         end
         highscore
         main_menu

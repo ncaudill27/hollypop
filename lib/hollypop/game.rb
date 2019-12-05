@@ -24,7 +24,7 @@ class HollyPop::Game
                     @points += new_question
                 rescue TypeError
                     spray("You lose.\n", :red).ducks(0.2)
-                    return score
+                    return @points
                 end
                 puts spray("Current score: #{@points}")
                 puts spray("Current artist: #{@artist}")
@@ -74,9 +74,5 @@ class HollyPop::Game
     
     def add_movies
         @artists.each{|artist| artist.add_movies}
-    end
-
-    def score
-        @points
     end
 end
