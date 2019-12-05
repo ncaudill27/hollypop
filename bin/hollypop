@@ -2,15 +2,5 @@
 
 require './lib/hollypop'
 
-# hugh = HollyPop::Artist.new("Hugh Jackman")
-# ryan = HollyPop::Artist.new("Ryan Reynolds")
-# scarlett = HollyPop::Artist.new("Scarlett Johansenn")
-# ryan.movies = ["Deadpool", "The Proposal", "Self/less"]
-# hugh.movies = ["Les Miserables", "Logan", "Chappie"]
-# scarlett.movies = ["Avengers: Infinity Wars", "Ghost in the Shell", "Lucy"]
-scrape = HollyPop::Scraper.new('https://m.imdb.com/chart/starmeter/?ref_=nv_cel_m')
-scrape.create_artists
-
-
 
 HollyPop::Cli.new.call

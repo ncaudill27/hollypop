@@ -6,7 +6,9 @@ class HollyPop::Cli
     end
 
     def call
-        welcome    
+        welcome  
+        HollyPop::Scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male%2Cfemale&ref_=nv_cel_m')
+        HollyPop::Scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male,female&start=51&ref_=rlm')
         main_menu
     end
 

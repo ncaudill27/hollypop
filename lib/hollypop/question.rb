@@ -33,6 +33,7 @@ class HollyPop::Question
             win(input)
         else
             puts spray("Nice try!", :red)
+            0
         end
     end
 
@@ -43,7 +44,7 @@ class HollyPop::Question
         puts "A little about #{winner.name}:"
         puts "#{winner.description}"
         puts "Made in: #{winner.year}"
-        return self.points
+        self.points
     end
 
     def other_artist

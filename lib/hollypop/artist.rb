@@ -25,8 +25,8 @@ class HollyPop::Artist
 
     attr_accessor :name, :url, :movies
 
-    def initialize(info)
-        info.each{|key, value| self.send(("#{key}="), value)} 
+    def initialize
+        #info.each{|key, value| self.send(("#{key}="), value)} 
         @movies = []
         @@all << self
     end
