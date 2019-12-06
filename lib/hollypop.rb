@@ -5,16 +5,12 @@ require "tty-prompt"
 require "paint"
 require_relative "./hollypop/version"
 
-module HollyPop
-  class Error < StandardError; end
-  # Your code goes here...
-end
 
 require_relative "./hollypop/cli"
 require_relative "./hollypop/artist"
 require_relative "./hollypop/question"
 require_relative "./hollypop/game"
 require_relative "./hollypop/scraper"
-require_relative "./hollypop/style"
 require_relative "./hollypop/movie"
 require_relative "./hollypop/explore"
+require_relative "./concerns/style"

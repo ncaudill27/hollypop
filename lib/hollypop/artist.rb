@@ -9,6 +9,10 @@ class HollyPop::Artist
         @@all.collect{|artist| artist.name.downcase}
     end
 
+    def self.has_artist?(name)
+        self.all_names.include?(name)
+    end
+
     def self.find(name)
         @@all.find{|artist| artist.name.downcase == name}
     end

@@ -6,13 +6,16 @@ class HollyPop::Cli
     end
 
     def call
-        welcome  
+        welcome
+        # Scraping 100 artists reduces chances of repeated artists when \
+        # HollyPop::Artist.game_list generates 5 random names for Game instances.
         HollyPop::Scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male%2Cfemale&ref_=nv_cel_m')
         HollyPop::Scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male,female&start=51&ref_=rlm')
         main_menu
     end
 
     def welcome
+        #! Refer to lib/concerns/style.rb for heavy use of output decorators
         spray("Welcome to...\n").ducks
         sleep 1
         puts candy("================================================================")
@@ -67,8 +70,8 @@ class HollyPop::Cli
     def start_game
         active_game = HollyPop::Game.new
         if active_game.points >  @highscore
-            candy("New High Score!!!\n").ducks
-            @highscore = active_game.points
+            spray("New High Score!!!\n").ducks(0.001)
+            @highscore = active_game.points # When Game loop breaks code continues here
         end
         highscore
         main_menu

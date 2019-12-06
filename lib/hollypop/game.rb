@@ -4,9 +4,9 @@ class HollyPop::Game
 
     def initialize
         @points = 0
-        @artists = game_artists
-        add_movies
-        choose_artist
+        @artists = game_artists # Populates game with random Artist objects
+        add_movies              # Scrapes movies for those artists
+        choose_artist           # Prompts user to set #current_artist
         game_menu
     end
 
@@ -21,11 +21,14 @@ class HollyPop::Game
 
             when "quiz"
                 begin
+                    # 1/3 #new_question return nil on incorrect answers.
                     @points += new_question
                 rescue TypeError
+                    # 2/3 Allowing easy access to end game.
                     spray("You lose.\n", :red).ducks(0.2)
                     return @points
                 end
+                # 3/3 Loops continues here for correct answers.
                 puts spray("Current score: #{@points}")
                 puts spray("Current artist: #{@artist}")
             when "new artist"
@@ -59,9 +62,8 @@ class HollyPop::Game
     def choose_artist
         puts spray("Which artist would you like to choose?")
         candy("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n").ducks(0.0005)
-        prompt = TTY::Prompt.new(symbols: {marker: '>'})
-        input = prompt.select("Current artist:", game_artists_names)
-        @current_artist = HollyPop::Artist.find(input.downcase)
+        input = tty_options.select("Current artist:", game_artists_names).downcase
+        @current_artist = HollyPop::Artist.find(input)
     end
 
     def game_artists

@@ -6,7 +6,7 @@ module HollyPop::Stylin
         end
     end
     
-    module Colors
+    module Ux
         def candy(string) 
             colorized = string.each_char.collect do |c|
                 Paint[c, Paint.random, :bright]
@@ -17,27 +17,31 @@ module HollyPop::Stylin
         def spray(string, color = Paint.random)
             Paint[string, color, :bright]
         end
+
+        def tty_options
+            TTY::Prompt.new(symbols: {marker: '>'})
+        end
     end
 end
 
 class HollyPop::Cli
     extend HollyPop::Stylin::Motion
-    include HollyPop::Stylin::Colors
+    include HollyPop::Stylin::Ux
 end
 
 class HollyPop::Game
     extend HollyPop::Stylin::Motion
-    include HollyPop::Stylin::Colors
+    include HollyPop::Stylin::Ux
 end
 
 class HollyPop::Question
     extend HollyPop::Stylin::Motion
-    include HollyPop::Stylin::Colors
+    include HollyPop::Stylin::Ux
 end
 
 class HollyPop::Explore
     extend HollyPop::Stylin::Motion
-    include HollyPop::Stylin::Colors
+    include HollyPop::Stylin::Ux
 end
 
 class String

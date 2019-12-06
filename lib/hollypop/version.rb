@@ -1,3 +1,3 @@
-module Hollypop
+module HollyPop
   VERSION = "0.1.0"
 end
