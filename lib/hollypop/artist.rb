@@ -9,6 +9,10 @@ class HollyPop::Artist
         @@all.collect{|artist| artist.name.downcase}
     end
 
+    def self.alpha_sort
+        self.all.sort{|star_a, star_b| star_a.name <=> star_b.name }
+    end
+
     def self.has_artist?(name)
         self.all_names.include?(name)
     end
@@ -47,6 +51,10 @@ class HollyPop::Artist
             created.url = 'https://m.imdb.com' + movie.attribute('href').value
             self.movies << created
         end
+    end
+
+    def alpha_movie
+        @movies.sort{|mov_a, mov_b| mov_a.name <=> mov_b.name}
     end
 
     def has_movie?(name)

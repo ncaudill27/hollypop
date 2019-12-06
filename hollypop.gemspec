@@ -10,8 +10,9 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{HollyPop! The celebrity quiz game!}
   spec.description   = %q{HollyPop is a Flatiron student CLI project.}
-  spec.homepage      = "https://github.com/ncaudill27/hollypop"
+  spec.homepage      = "https://rubygems.org/gems/hollypop"
   spec.license       = "MIT"
+
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

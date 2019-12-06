@@ -22,7 +22,7 @@ class HollyPop::Explore
     def set_artist
         spray("Which artist would you like details for?\n").ducks
         # Following line will print output into columns
-        HollyPop::Artist.all.each_slice(5) { |row| puts row.map{|artist| "%5s" % spray(artist.name)}.join("  "); sleep 0.1 }
+        HollyPop::Artist.alpha_sort.each_slice(5) { |row| puts row.map{|artist| "%5s" % spray(artist.name)}.join("  "); sleep 0.1 }
         puts
         print("> ")
         input = gets.strip.downcase
@@ -40,7 +40,7 @@ class HollyPop::Explore
         puts
         spray("#{@artist.name}'s Movies:\n").ducks
         # Following line will print output into columns
-        @artist.movies.each_slice(5) { |row| puts row.map{|movie| "%5s" % spray(movie.name)}.join("  "); sleep 0.1 }
+        @artist.alpha_movie.each_slice(5) { |row| puts row.map{|movie| "%5s" % spray(movie.name)}.join("  "); sleep 0.1 }
         menu
     end
 
