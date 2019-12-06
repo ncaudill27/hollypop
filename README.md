@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Navigate menus with a combination of typical Cli prompts and TTY-prompts. Quiz yourself or explore different artists movies.
 
 ## Development
 
