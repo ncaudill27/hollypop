@@ -4,7 +4,7 @@ require "hollypop/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "hollypop"
-  spec.version       = Hollypop::VERSION
+  spec.version       = HollyPop::VERSION
   spec.authors       = ["ncaudill27"]
   spec.email         = ["nelson.a.caudill@gmail.com"]
 
