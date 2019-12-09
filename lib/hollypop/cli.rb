@@ -9,8 +9,9 @@ class HollyPop::Cli
         welcome
         # Scraping 100 artists reduces chances of repeated artists when \
         # HollyPop::Artist.game_list generates 5 random names for Game instances.
-        HollyPop::Scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male%2Cfemale&ref_=nv_cel_m')
-        HollyPop::Scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male,female&start=51&ref_=rlm')
+        scraper = HollyPop::Scraper.new
+        scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male%2Cfemale&ref_=nv_cel_m')
+        scraper.url_to_artists('https://www.imdb.com/search/name/?gender=male,female&start=51&ref_=rlm')
         main_menu
     end
 

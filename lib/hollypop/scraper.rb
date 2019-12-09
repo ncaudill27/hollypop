@@ -1,17 +1,22 @@
 class HollyPop::Scraper
 
-    attr_accessor :doc
-
-    def initialize(url)
-        @doc = Nokogiri::HTML(open(url))
-    end
-
-    def self.url_to_artists(url)
-        scrape = HollyPop::Scraper.new(url)
-        scrape.doc.css("h3 a").each do |create|
+    def url_to_artists(url)
+        doc = Nokogiri::HTML(open(url))
+        doc.css("h3 a").each do |create|
             artist = HollyPop::Artist.new
             artist.name = create.text.strip.chomp
             artist.url = create.attribute("href").value
+        end
+    end
+
+    def scrape_movies(url)
+        base = 'https://m.imdb.com' + url
+        doc = Nokogiri::HTML(open(base))
+        doc.css('ul .ellipse a').map do |movie|
+            created = HollyPop::Movie.new
+            created.name = movie.text.strip.chomp
+            created.url = 'https://m.imdb.com' + movie.attribute('href').value
+            created
         end
     end
 

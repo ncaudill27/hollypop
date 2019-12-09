@@ -44,13 +44,7 @@ class HollyPop::Artist
     end
 
     def add_movies
-        finder = HollyPop::Scraper.new('https://m.imdb.com' + self.url)
-        finder.doc.css('ul .ellipse a').each do |movie|
-            created = HollyPop::Movie.new
-            created.name = movie.text.strip.chomp
-            created.url = 'https://m.imdb.com' + movie.attribute('href').value
-            self.movies << created
-        end
+        self.movies = HollyPop::Scraper.new.scrape_movies(@url)
     end
 
     def alpha_movie

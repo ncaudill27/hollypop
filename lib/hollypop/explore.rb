@@ -22,7 +22,7 @@ class HollyPop::Explore
     def set_artist
         spray("Which artist would you like details for?\n").ducks
         # Following line will print output into columns
-        HollyPop::Artist.alpha_sort.each_slice(5) { |row| puts row.map{|artist| "%5s" % spray(artist.name)}.join("  "); sleep 0.1 }
+        HollyPop::Artist.alpha_sort.each_slice(5){|row| puts row.map{|artist| "%-6s" % spray(artist.name)}.join("  "); sleep 0.1 }
         puts
         print("> ")
         input = gets.strip.downcase
