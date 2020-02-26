@@ -15,7 +15,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.13.0)
     necromancer (0.5.1)
-    nokogiri (1.10.5)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     paint (2.1.1)
     pastel (0.7.3)
